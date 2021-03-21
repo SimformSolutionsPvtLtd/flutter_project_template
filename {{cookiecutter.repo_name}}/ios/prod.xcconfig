@@ -1,0 +1,11 @@
+//
+//  prod.xcconfig
+//  Runner
+//
+//  Created by Ankit Panchal on 26/10/20.
+//
+
+// Configuration settings file format documentation can be found at:
+#include "Generated.xcconfig"
+FLUTTER_TARGET=lib/main_prod.dart
+EXTRA_GEN_SNAPSHOT_OPTIONS=--obfuscate

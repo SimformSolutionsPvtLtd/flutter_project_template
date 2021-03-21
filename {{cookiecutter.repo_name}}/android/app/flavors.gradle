@@ -1,0 +1,20 @@
+android {
+
+    flavorDimensions "mode"
+
+    productFlavors {
+        
+      uat {
+            manifestPlaceholders = ["app_icon": "@mipmap/ic_launcher"]
+        }
+
+      dev {
+            manifestPlaceholders = ["app_icon": "@mipmap/ic_launcher"]
+        }
+
+      prod {
+            manifestPlaceholders = ["app_icon": "@mipmap/ic_launcher"]
+        }
+
+    }
+}
