@@ -58,7 +58,6 @@ Input name | Description | Default
 app_name | Application name | App Name
 repo_name | Root Folder name | Repository Name
 bundle_identifier | Bundle ID of project | com.simformsolutions.app
-appcenter_key | AppCenter key | APPCENTER_KEY
 include_portraitUp_orientation | Include app support for portrait up orientation or not | 1 (y)
 include_landscapeLeft_orientation | Include app support for landscape left orientation or not | 1 (y)
 include_portraitDown_orientation | Include app support for portrait down orientation or not | 1 (y)
@@ -149,4 +148,4 @@ To test beta versions of apps using TestFlight, you’ll need to receive an invi
 ## Important credentials
 
 - **Bitrise**: developer@simformsolutions.com
-- **App Center**:  developer@simformsolutions.com
+- **Sentry**: developer@simform.com

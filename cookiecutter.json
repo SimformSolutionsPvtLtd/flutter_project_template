@@ -2,7 +2,7 @@
   "app_name": "App Name",
   "repo_name": "Repository_Name",
   "bundle_identifier": "com.simformsolutions.app",
-  "appcenter_key": "APPCENTER_KEY",
+  "sentry_dsn_key": "Sentry DSN",
   "include_portraitUp_orientation": ["y", "n"],
   "include_landscapeLeft_orientation": ["y", "n"],
   "include_portraitDown_orientation": ["y", "n"],
@@ -10,7 +10,6 @@
   "minimum_android_sdk_version": 21,
   "minimum_iOS_sdk_version": 11,
   "target_ios_device": ["iPhone/iPod touch", "iPad", "all"],
-  "sentry_dsn_key": "Sentry DSN",
   "repo_link": "NA",
   "launch_studio": ["true", "false"],
   "_copy_without_render": [".gradle", "gradle/", "*gradlew", "*gradlew.bat"]

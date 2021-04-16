@@ -45,6 +45,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 cd ios/
 pod install
 cd ..
+flutter formate
 initialize_git
 {%- if cookiecutter.repo_link != "NA" -%}
 connect_git_repo

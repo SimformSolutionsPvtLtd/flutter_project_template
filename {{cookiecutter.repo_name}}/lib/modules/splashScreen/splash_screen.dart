@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:{{cookiecutter.repo_name}}/resources/resources.dart';
 import 'package:{{cookiecutter.repo_name}}/values/app_colors.dart';
 import 'package:{{cookiecutter.repo_name}}/values/strings.dart';
-import 'package:{{cookiecutter.repo_name}}/widgets/weight_slider.dart';
 
 class SplashScreen extends StatefulWidget {
   final Color backgroundColor = Colors.white;
