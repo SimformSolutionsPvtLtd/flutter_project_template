@@ -9,10 +9,10 @@ class SharedPreferencesBuilder<T> extends StatelessWidget {
   final AsyncWidgetBuilder<T> builder;
   final Function rawJson;
   const SharedPreferencesBuilder({
-    Key key,
-    @required this.pref,
-    @required this.builder,
-    this.rawJson,
+    Key? key,
+    required this.pref,
+    required this.builder,
+    required this.rawJson,
   }) : super(key: key);
 
   @override

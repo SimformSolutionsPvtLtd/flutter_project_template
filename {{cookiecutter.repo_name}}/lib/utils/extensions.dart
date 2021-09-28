@@ -17,10 +17,10 @@ extension SdpExtenstion on num {
 /// provides extension to get a dependency from provider
 extension ContextExtension on BuildContext {
   /// returns object of type [T] from provider
-  T provide<T>({bool listen}) => Provider.of<T>(this, listen: listen ?? false);
+  T provide<T>({bool? listen}) => Provider.of<T>(this, listen: listen ?? false);
 
   /// allows to change field focus from one [FocusNode] to another
-  void fieldFocusChange({@required FocusNode from, @required FocusNode to}) {
+  void fieldFocusChange({required FocusNode from, required FocusNode to}) {
     from.unfocus();
     FocusScope.of(this).requestFocus(to);
   }
@@ -40,12 +40,12 @@ extension StatefulWidgetExtension on State {
   T provide<T>() => Provider.of<T>(context, listen: false);
 
   /// allows to change field focus from one [FocusNode] to another
-  void fieldFocusChange({@required FocusNode from, @required FocusNode to}) {
+  void fieldFocusChange({required FocusNode from, required FocusNode to}) {
     from.unfocus();
     FocusScope.of(context).requestFocus(to);
   }
 
-  bool get isDev => FlavorConfig.of(context).flavor == Flavor.dev;
+  bool get isDev => FlavorConfig.of(context)!.flavor == Flavor.dev;
 }
 
 /// allows to create [MultiProvider] with less boilerplate
@@ -64,8 +64,8 @@ extension DateUtils on DateTime {
   }
 
   static DateTime stringToDateWithFormat({
-    @required String format,
-    @required String dateString,
+    required String format,
+    required String dateString,
   }) {
     return DateFormat(format).parse(dateString);
   }

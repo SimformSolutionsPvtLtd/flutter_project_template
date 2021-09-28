@@ -6,7 +6,7 @@ part 'apiservice.g.dart';
 
 @RestApi(baseUrl: "https://jsonplaceholder.typicode.com")
 abstract class ApiService {
-  factory ApiService({Dio dio, String baseUrl}){
+  factory ApiService({required Dio dio, required String baseUrl}) {
     return _ApiService(dio, baseUrl: baseUrl);
   }
 

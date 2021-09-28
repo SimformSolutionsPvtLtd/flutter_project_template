@@ -1,4 +1,4 @@
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 // ignore_for_file: public_member_api_docs
 /// class to check for internet availability
@@ -15,7 +15,7 @@ class NetworkUtils {
 
   dynamic checkInternet(Function func) {
     checkIsInternet().then((internet) {
-      if (internet != null && internet) {
+      if (internet) {
         func(true);
       }
       else{

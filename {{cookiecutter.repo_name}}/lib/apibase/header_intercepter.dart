@@ -12,11 +12,11 @@ class HeaderInterceptor extends Interceptor {
   HeaderInterceptor({this.showLogs = true});
 
   @override
-  Future<dynamic> onRequest(RequestOptions options) async {
+  Future<dynamic> onRequest(RequestOptions options,RequestInterceptorHandler requestInterceptorHandler) async {
     var internet = await NetworkUtils().checkIsInternet();
-    if (internet != null && internet) {
+    if ( internet) {
       final token = await checkToken();
-      if (token != null && token.isNotEmpty) {
+      if (token.isNotEmpty) {
         options.headers.putIfAbsent('Authorization', () => '$token');
       }
       return options;
@@ -27,7 +27,7 @@ class HeaderInterceptor extends Interceptor {
   }
 
   @override
-  Future<dynamic> onResponse(Response options) async {
+  Future<dynamic> onResponse(Response options,ResponseInterceptorHandler responseInterceptorHandler) async {
     if (options.statusCode == 401) {
       ///TODO:- Handle token expired
       return options;
@@ -36,7 +36,7 @@ class HeaderInterceptor extends Interceptor {
   }
 
   @override
-  Future<DioError> onError(DioError dioError) {
+  Future<DioError> onError(DioError dioError,ErrorInterceptorHandler errorInterceptorHandler) {
     return dioError.error;
   }
 

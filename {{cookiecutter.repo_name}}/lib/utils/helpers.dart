@@ -5,7 +5,7 @@ import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
 /// allows to set system icon theme (light | dark)
-void setSystemIcons({@required bool dark}) {
+void setSystemIcons({required bool dark}) {
   SystemChrome.setSystemUIOverlayStyle(
       (dark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light).copyWith(
     statusBarColor: Colors.transparent,
@@ -22,7 +22,7 @@ void setupLogging() {
 }
 
 /// allows to create a provider with less boilerplate
-Provider<T> createProviderFor<T>(T provide, {Dispose<T> dispose}) =>
+Provider<T> createProviderFor<T>(T provide, {Dispose<T>? dispose}) =>
     Provider<T>(create: (context) => provide, dispose: dispose);
 
 void setAppOrientation() {
