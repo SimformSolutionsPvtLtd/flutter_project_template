@@ -13,7 +13,8 @@ class WellnessApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: AppColors.colorPrimary,
-        accentColor: AppColors.colorAccent,
+        colorScheme:
+            ColorScheme.fromSwatch().copyWith(secondary: AppColors.colorAccent),
         unselectedWidgetColor: AppColors.colorPrimary,
       ),
       home: SplashScreen(),
@@ -22,4 +23,3 @@ class WellnessApp extends StatelessWidget {
     );
   }
 }
-

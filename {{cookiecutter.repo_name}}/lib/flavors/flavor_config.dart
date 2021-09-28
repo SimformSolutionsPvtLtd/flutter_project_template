@@ -8,10 +8,10 @@ class FlavorConfig extends InheritedWidget {
   final FlavorValues values;
 
   FlavorConfig({
-    @required this.flavor,
-    @required this.values,
-    Widget child,
-  }) : super(child: child);
+    required this.flavor,
+    required this.values,
+    Widget? child,
+  }) : super(child: child!);
 
 
   @override
@@ -20,6 +20,6 @@ class FlavorConfig extends InheritedWidget {
     return false;
   }
 
-  static FlavorConfig of(BuildContext context) =>
+  static FlavorConfig? of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<FlavorConfig>();
 }

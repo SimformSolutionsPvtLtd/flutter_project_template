@@ -15,10 +15,20 @@ void main() {
   setupLogging();
   debugPaintSizeEnabled = false;
   setupLocator();
+  {%- if cookiecutter.sentry_dsn_key == "NA" -%}
+  //
+  //TODO: Add a Sentry DSN Key
+  // SentryFlutter.init(
+  //       (options) => options.dsn = 'https://{{cookiecutter.sentry_dsn_key}}@o0.ingest.sentry.io/0',
+  //   appRunner: () => runApp(FlavoredApp()),
+  // );
+  runApp(FlavoredApp());
+  {% else %}
   SentryFlutter.init(
         (options) => options.dsn = 'https://{{cookiecutter.sentry_dsn_key}}@o0.ingest.sentry.io/0',
     appRunner: () => runApp(FlavoredApp()),
   );
+  {% endif %}
 }
 
 class FlavoredApp extends StatelessWidget {

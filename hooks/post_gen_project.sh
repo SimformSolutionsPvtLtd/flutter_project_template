@@ -37,7 +37,7 @@ launch_studio() {
         echo "Android Studio should now be running, have fun with your new project!"
     else
         echo "Unsupported operating system: skipping the launching of Android Studio..."
-    fi
+    fi                                                                      
 }
 
 flutter pub get
@@ -45,7 +45,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 cd ios/
 pod install
 cd ..
-flutter formate
+flutter format lib
 initialize_git
 {%- if cookiecutter.repo_link != "NA" -%}
 connect_git_repo

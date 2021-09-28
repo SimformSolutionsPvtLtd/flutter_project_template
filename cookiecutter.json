@@ -2,7 +2,7 @@
   "app_name": "App Name",
   "repo_name": "Repository_Name",
   "bundle_identifier": "com.simformsolutions.app",
-  "sentry_dsn_key": "Sentry DSN",
+  "sentry_dsn_key": "NA",
   "include_portraitUp_orientation": ["y", "n"],
   "include_landscapeLeft_orientation": ["y", "n"],
   "include_portraitDown_orientation": ["y", "n"],
@@ -12,5 +12,8 @@
   "target_ios_device": ["iPhone/iPod touch", "iPad", "all"],
   "repo_link": "NA",
   "launch_studio": ["true", "false"],
-  "_copy_without_render": [".gradle", "gradle/", "*gradlew", "*gradlew.bat"]
+  "_copy_without_render": [".gradle", "gradle/", "*gradlew", "*gradlew.bat"],
+  "Instruction1":"Make sure to remove any spaces before and after the Flutter SDK path",
+  "Instruction2":"Example Path --> /Users/ujas.majithiya/work/flutter",
+  "flutter_sdk_path": "NA"
 }
