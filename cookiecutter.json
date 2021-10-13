@@ -13,7 +13,5 @@
   "repo_link": "NA",
   "launch_studio": ["true", "false"],
   "_copy_without_render": [".gradle", "gradle/", "*gradlew", "*gradlew.bat"],
-  "Instruction1":"Make sure to remove any spaces before and after the Flutter SDK path",
-  "Instruction2":"Example Path --> /Users/ujas.majithiya/work/flutter",
   "flutter_sdk_path": "NA"
 }
