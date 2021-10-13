@@ -68,6 +68,7 @@ target_ios_device | ios device support | iPhone/iPod touch
 sentry_dsn_key | Sentry DSN key for crash reporting | Sentry DSN
 repo_link | Repository link to connect project with remote | NA
 launch_studio | Open Android Studio after project is created. <b>Works only for MacOS</b> | 1 (false)
+flutter_sdk_path | Flutter SDK path without spaces before and after <br />(ex-: Directory1/Directory2/flutter) | NA
 
 
 ## Dependencies used in the project with their usage
