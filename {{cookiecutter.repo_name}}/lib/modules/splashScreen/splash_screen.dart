@@ -1,20 +1,20 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:{{cookiecutter.repo_name}}/resources/resources.dart';
-import 'package:{{cookiecutter.repo_name}}/values/app_colors.dart';
-import 'package:{{cookiecutter.repo_name}}/values/strings.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+
+import '../../resources/resources.dart';
+import '../../values/strings.dart';
+import '../../utils/extensions.dart';
+import 'splash_screen_store.dart';
 
 class SplashScreen extends StatefulWidget {
-  final Color backgroundColor = Colors.white;
-  final TextStyle styleTextUnderTheLoader = TextStyle(
-      fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.black);
-
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   final splashDelay = 5;
 
   @override
@@ -24,14 +24,13 @@ class _SplashScreenState extends State<SplashScreen> {
     _loadWidget();
   }
 
-  _loadWidget() async {
-    var _duration = Duration(seconds: splashDelay);
-    return Timer(_duration, navigationPage);
+  void _loadWidget() async {
+    final _duration = Duration(seconds: splashDelay);
+    Timer(_duration, navigationPage);
   }
 
-  void navigationPage() {
-    Navigator.of(context).pushReplacementNamed(AppStrings.txtAfterSplash);
-  }
+  void navigationPage() =>
+      context.pushReplacementNamed(AppStrings.txtAfterSplash);
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +41,10 @@ class _SplashScreenState extends State<SplashScreen> {
           children: <Widget>[
             Container(
                 child: Image.asset(
-                  Images.splash,
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                )),
+              Images.splash,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+            )),
           ],
         ),
       ),
@@ -53,20 +52,29 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-class AfterSplash extends StatefulWidget {
-  @override
-  _AfterSplashState createState() => _AfterSplashState();
-}
-
-class _AfterSplashState extends State<AfterSplash> {
+class AfterSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final splashStore = Provider.of<SplashScreenStore>(context);
     return Scaffold(
-      appBar:  AppBar(
-          title: Text(""),
-          automaticallyImplyLeading: false
-      ),
-      body:  Container(
+      appBar: AppBar(title: Text(""), automaticallyImplyLeading: false),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Observer(
+              builder: (_) => Text(
+                "Network State : ${splashStore.state}",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: splashStore.changeNetworkState,
+              child: Text("Change State"),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,0 +1,13 @@
+flutter format --set-exit-if-changed lib
+if [ $? -ne 0 ]; then
+    echo "Code is Not formatted"
+    exit 1
+    else
+      echo "Code is formatted"
+fi
+
+flutter analyze
+if [ $? -ne 0 ]; then
+  echo "Resolve issues from dart analysis"
+  exit 1
+fi

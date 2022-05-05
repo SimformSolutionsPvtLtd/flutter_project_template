@@ -1,8 +1,8 @@
 
 # Flutter Project Template
 
-[![Flutter Version](https://img.shields.io/badge/Flutter-V1.22.2-blue)](https://flutter.dev)
-[![Dart Version](https://img.shields.io/badge/Dart-v2.10.2-blue)](https://dart.dev)
+[![Flutter Version](https://img.shields.io/badge/Flutter-v2.10.2-blue)](https://flutter.dev)
+[![Dart Version](https://img.shields.io/badge/Dart-v2.16.1-blue)](https://dart.dev)
 [![API](https://img.shields.io/badge/API-28%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=29)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a1c9a1b1d1ce4ca7a201ab93492bf6e0)](https://www.codacy.com/app/LDRAlighieri/Corbind?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LDRAlighieri/Corbind&amp;utm_campaign=Badge_Grade)
 
@@ -86,6 +86,11 @@ flutter_sdk_path | Flutter SDK path without spaces before and after <br />(ex-: 
 ## Architecture used
 
 - [**MobX**](https://mobx.pub/) to manage the state of the widget with [**Provider**](https://pub.dev/packages/provider) to inject the dependencies of MobX stores to widgets.
+
+## Git Hooks Configuration
+*  Open **set-githooks.bash** file and Run it as highlighted in screenshot.
+
+![Screenshot](https://raw.githubusercontent.com/SimformSolutionsPvtLtd/flutter_project_template/develop/preview/githooks_preview.png)
 
 ## Permissions
 

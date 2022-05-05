@@ -2,17 +2,11 @@ import 'server_error.dart';
 
 class BaseModel<T> {
   late ServerError _error;
-  late T data;
+  late T? data;
 
-  setException(ServerError error) {
-    _error = error;
-  }
+  void setException(ServerError error) => _error = error;
 
-  setData(T data) {
-    this.data = data;
-  }
+  void setData(T? data) => this.data = data;
 
-  get getException {
-    return _error;
-  }
+  ServerError get getException => _error;
 }

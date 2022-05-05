@@ -8,15 +8,11 @@ class ServerError implements Exception {
     _handleError(error);
   }
 
-  getErrorCode() {
-    return _errorCode;
-  }
+  int? getErrorCode() => _errorCode;
 
-  getErrorMessage() {
-    return _errorMessage;
-  }
+  String getErrorMessage() => _errorMessage;
 
-  _handleError(DioError error) {
+  String _handleError(DioError error) {
     switch (error.type) {
       case DioErrorType.cancel:
         _errorMessage = "Request was cancelled";
@@ -25,8 +21,7 @@ class ServerError implements Exception {
         _errorMessage = "Connection timeout";
         break;
       case DioErrorType.other:
-        _errorMessage =
-        "Connection failed due to internet connection";
+        _errorMessage = "Connection failed due to internet connection";
         break;
       case DioErrorType.receiveTimeout:
         _errorMessage = "Receive timeout in connection";
