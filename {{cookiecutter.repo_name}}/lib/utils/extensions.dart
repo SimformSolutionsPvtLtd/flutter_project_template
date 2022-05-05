@@ -32,6 +32,17 @@ extension ContextExtension on BuildContext {
       FocusScope.of(this).requestFocus(FocusNode());
     }
   }
+
+  void pushNamed(String routeName, {Object? arguments}) =>
+      Navigator.of(this).pushNamed(routeName, arguments: arguments);
+
+  void pushReplacementNamed(String routeName) =>
+      Navigator.of(this).pushReplacementNamed(routeName);
+
+  void pushAndRemoveUntil(String routeName) =>
+      Navigator.of(this).pushNamedAndRemoveUntil(routeName, (route) => false);
+
+  void pop() => Navigator.pop(this);
 }
 
 /// provides extension to get a dependency from provider
@@ -50,11 +61,15 @@ extension StatefulWidgetExtension on State {
 
 /// allows to create [MultiProvider] with less boilerplate
 extension ProviderExtension<T> on Widget {
-  /// creates instance of MultiProvider
   Widget withProviders(List<Provider> providers) => MultiProvider(
-    providers: providers,
-    child: this,
-  );
+        providers: providers,
+        child: this,
+      );
+
+  Widget withProvider<T>(T provider) => Provider<T>(
+        create: (_) => provider,
+        child: this,
+      );
 }
 
 /// DateTime extension

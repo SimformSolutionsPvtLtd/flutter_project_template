@@ -1,18 +1,16 @@
-import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
 
-import '../model/response/user/user.dart';
+import '../model/model.dart';
+
 part 'apiservice.g.dart';
 
-@RestApi(baseUrl: "https://jsonplaceholder.typicode.com")
+@RestApi()
 abstract class ApiService {
-  factory ApiService({required Dio dio, required String baseUrl}) {
-    return _ApiService(dio, baseUrl: baseUrl);
-  }
+  factory ApiService(Dio dio) = _ApiService;
 
   /// Login
   @POST('/login')
-  Future<User> login(
-      @Body() Map<String, dynamic> loginRequestBean,
-      );
+  Future<APIResponse<User>> login(
+      @Body() Map<String, dynamic> loginRequestBean);
 }

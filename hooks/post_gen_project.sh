@@ -50,5 +50,6 @@ initialize_git
 {%- if cookiecutter.repo_link != "NA" -%}
 connect_git_repo
 {% endif %}
+git config core.hooksPath .githooks/
 update_project_permissions
 attempt_to_launch_studio
