@@ -90,4 +90,15 @@ extension StringExtension on String {
   String lowerCaseFirstLatter() {
     return "${this[0].toLowerCase()}${substring(1)}";
   }
+
+  String capitalize() => toBeginningOfSentenceCase(this) ?? "";
+
+  String padding(int width, [String padding = " "]) =>
+      padLeft(width, padding).padRight(width, padding);
+
+  bool get isMail => RegExp(r"^(\w|[.])+@(\w+[.])+\w+$").hasMatch(this);
+
+  void copyToClipboard() => Clipboard.setData(
+        ClipboardData(text: this),
+      );
 }
