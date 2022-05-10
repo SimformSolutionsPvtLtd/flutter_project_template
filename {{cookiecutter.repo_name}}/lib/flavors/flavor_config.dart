@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'flavor.dart';
-import 'flavor_values.dart';
+import '../flavors/flavor.dart';
+import '../flavors/flavor_values.dart';
 
 class FlavorConfig extends InheritedWidget {
-  final Flavor flavor;
-  final FlavorValues values;
-
   FlavorConfig({
+    Key? key,
     required this.flavor,
     required this.values,
     Widget? child,
-  }) : super(child: child!);
+  }) : super(key: key, child: child!);
+  final Flavor flavor;
 
+  final FlavorValues values;
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {
-    // TODO: implement updateShouldNotify
+    // TODO(username): implement updateShouldNotify
     return false;
   }
 

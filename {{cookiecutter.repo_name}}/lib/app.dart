@@ -6,7 +6,10 @@ import 'routes.dart';
 import 'services/navigation_service.dart';
 import 'values/app_colors.dart';
 
+/// Change name of app as per Project
 class WellnessApp extends StatelessWidget {
+  const WellnessApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,7 +20,7 @@ class WellnessApp extends StatelessWidget {
             ColorScheme.fromSwatch().copyWith(secondary: AppColors.colorAccent),
         unselectedWidgetColor: AppColors.colorPrimary,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
       routes: Routes.routes,
       navigatorKey: locator<NavigationService>().navigatorKey,
     );

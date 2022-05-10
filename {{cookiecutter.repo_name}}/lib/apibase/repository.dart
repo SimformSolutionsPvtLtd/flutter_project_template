@@ -8,11 +8,6 @@ import 'header_intercepter.dart';
 import 'server_error.dart';
 
 class Repository {
-  static final Repository instance = Repository._initialize();
-  late Dio dio;
-
-  late ApiService apiService;
-
   factory Repository() => instance;
 
   Repository._initialize() {
@@ -21,13 +16,18 @@ class Repository {
     apiService = ApiService(dio);
   }
 
+  static final Repository instance = Repository._initialize();
+
+  late Dio dio;
+
+  late ApiService apiService;
+
   Future<BaseModel<User>> getPostFromId(Map<String, dynamic> id) async {
     try {
       final response = await apiService.login(id);
-      return BaseModel()..data = response.data;
-    } on DioError catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
-      return BaseModel()..setException(ServerError.withError(error: error));
+      return BaseModel(data: response.data);
+    } on DioError catch (error) {
+      return BaseModel(error: ServerError.withError(error: error));
     }
   }
 }

@@ -7,70 +7,77 @@ import '../utils/shared_preferences_helper.dart';
 import 'api_logger.dart';
 
 class HeaderInterceptor extends Interceptor {
-  final bool showLogs;
-  final APILogger _logger = APILogger();
-
   HeaderInterceptor({this.showLogs = true});
 
+  final bool showLogs;
+
+  final APILogger _logger = APILogger();
+
   @override
-  void onRequest(RequestOptions options,
-      RequestInterceptorHandler requestInterceptorHandler) async {
+  Future<void> onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
     final internet = await NetworkUtils().checkIsInternet();
     if (internet) {
       final token = await checkToken();
       if (token.isNotEmpty) {
-        options.headers.putIfAbsent('Authorization', () => '$token');
+        options.headers.putIfAbsent('Authorization', () => token);
       }
       _logger.printSuccessLog(
         apiMethod: options.method,
         responseBody: options.data.toString(),
         parameters: options.queryParameters,
-        url: "${options.baseUrl}${options.path}",
-        token: options.headers["Authentication"] ?? "",
+        url: '${options.baseUrl}${options.path}',
+        token: options.headers['Authentication'].toString(),
       );
     } else {
-      ///TODO:- Show no internet dialog or toast here.
+      // TODO(username): Show no internet dialog or toast here.
     }
-    requestInterceptorHandler.next(options);
+    handler.next(options);
   }
 
   @override
-  void onResponse(Response response,
-      ResponseInterceptorHandler responseInterceptorHandler) {
+  void onResponse(
+    Response response,
+    ResponseInterceptorHandler handler,
+  ) {
     if (response.statusCode == 401) {
-      ///TODO:- Handle token expired
+      // TODO(username): Handle token expired
     }
     _logger.printSuccessLog(
       apiMethod: response.requestOptions.method,
       responseBody: response.data.toString(),
-      parameters: response.requestOptions.data,
-      url: "${response.realUri.scheme}://${response.realUri.authority}"
-          "${response.realUri.path}",
-      token: response.headers.value("Authentication") ?? "",
+      parameters: response.requestOptions.data as Object,
+      url: '${response.realUri.scheme}://${response.realUri.authority}'
+          '${response.realUri.path}',
+      token: response.headers.value('Authentication') ?? '',
       isRequest: false,
     );
-    responseInterceptorHandler.resolve(response);
+    handler.resolve(response);
   }
 
   @override
   void onError(
-      DioError dioError, ErrorInterceptorHandler errorInterceptorHandler) {
-    if (dioError.response != null) {
+    DioError err,
+    ErrorInterceptorHandler handler,
+  ) {
+    if (err.response != null) {
       _logger.printErrorLog(
-        responseBody: dioError.response!.data.toString(),
-        parameters: dioError.response!.requestOptions.data,
+        responseBody: err.response!.data.toString(),
+        parameters: err.response!.requestOptions.data as Object,
         url:
-            "${dioError.response!.realUri.scheme}://${dioError.response!.realUri.authority}"
-            "${dioError.response!.realUri.path}",
-        token: dioError.response!.headers.value("Authentication") ?? "",
-        errorString: dioError.response!.statusMessage ?? "No message found",
-        statusCode: dioError.response!.statusCode ?? -1,
+            '${err.response!.realUri.scheme}://${err.response!.realUri.authority}'
+            '${err.response!.realUri.path}',
+        token: err.response!.headers.value('Authentication') ?? '',
+        errorString: err.response!.statusMessage ?? 'No message found',
+        statusCode: err.response!.statusCode ?? -1,
       );
     }
 
-    errorInterceptorHandler.reject(dioError);
+    handler.reject(err);
   }
 
   Future<String> checkToken() async =>
-      await SharedPreferencesHelper.instance.getAuthToken();
+      SharedPreferencesHelper.instance.getAuthToken();
 }

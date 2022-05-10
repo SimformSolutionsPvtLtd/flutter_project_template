@@ -12,5 +12,6 @@ abstract class ApiService {
   /// Login
   @POST('/login')
   Future<APIResponse<User>> login(
-      @Body() Map<String, dynamic> loginRequestBean);
+    @Body() Map<String, dynamic> loginRequestBean,
+  );
 }

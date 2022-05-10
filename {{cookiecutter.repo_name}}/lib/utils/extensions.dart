@@ -11,7 +11,7 @@ import '../flavors/flavor_config.dart';
 // ignore_for_file: type_annotate_public_apis
 extension SdpExtenstion on num {
   /// provides display density based sizes
-  double get sdp => (this * 0.75 + devicePixelRatio).toDouble();
+  double get sdp => this * 0.75 + devicePixelRatio;
 }
 
 /// provides extension to get a dependency from provider
@@ -27,7 +27,7 @@ extension ContextExtension on BuildContext {
 
   void hideKeyboard() {
     final currentFocus = FocusScope.of(this);
-    SystemChannels.textInput.invokeMethod('TextInput.hide');
+    SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
     if (!currentFocus.hasPrimaryFocus) {
       FocusScope.of(this).requestFocus(FocusNode());
     }
@@ -66,7 +66,7 @@ extension ProviderExtension<T> on Widget {
         child: this,
       );
 
-  Widget withProvider<T>(T provider) => Provider<T>(
+  Widget withProvider<P>(P provider) => Provider<P>(
         create: (_) => provider,
         child: this,
       );
@@ -88,15 +88,15 @@ extension DateUtils on DateTime {
 
 extension StringExtension on String {
   String lowerCaseFirstLatter() {
-    return "${this[0].toLowerCase()}${substring(1)}";
+    return '${this[0].toLowerCase()}${substring(1)}';
   }
 
-  String capitalize() => toBeginningOfSentenceCase(this) ?? "";
+  String capitalize() => toBeginningOfSentenceCase(this) ?? '';
 
-  String padding(int width, [String padding = " "]) =>
+  String padding(int width, [String padding = ' ']) =>
       padLeft(width, padding).padRight(width, padding);
 
-  bool get isMail => RegExp(r"^(\w|[.])+@(\w+[.])+\w+$").hasMatch(this);
+  bool get isMail => RegExp(r'^(\w|[.])+@(\w+[.])+\w+$').hasMatch(this);
 
   void copyToClipboard() => Clipboard.setData(
         ClipboardData(text: this),
