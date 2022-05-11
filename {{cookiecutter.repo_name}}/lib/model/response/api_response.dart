@@ -4,14 +4,6 @@ part 'api_response.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true)
 class APIResponse<T> {
-  final int? code;
-
-  final T? data;
-
-  final String? message;
-
-  final String? status;
-
   const APIResponse({
     this.status,
     this.message,
@@ -24,6 +16,14 @@ class APIResponse<T> {
     T Function(Object? json) fromJsonT,
   ) =>
       _$APIResponseFromJson(json, fromJsonT);
+
+  final int? code;
+
+  final T? data;
+
+  final String? message;
+
+  final String? status;
 
   Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
       _$APIResponseToJson(this, toJsonT);

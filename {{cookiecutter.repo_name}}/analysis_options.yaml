@@ -1,27 +1,12 @@
-# if effective_dart package is used in project then uncomment below line
-#include: 'package:effective_dart/analysis_options.yaml'
+include: package:very_good_analysis/analysis_options.yaml
 
 analyzer:
-  strong-mode:
-    implicit-casts: true
-  errors:
-    argument_type_not_assignable: error
-    dead_code: info
+  exclude:
+    - '**/*.g.dart'
 
 linter:
   rules:
-    avoid_classes_with_only_static_members: false
     public_member_api_docs: false
-    annotate_overrides: true
-    await_only_futures: true
-    cancel_subscriptions: true
-    close_sinks: true
-    control_flow_in_finally: true
-    empty_statements: true
-    avoid_positional_boolean_parameters: false
-    avoid_catches_without_on_clauses: false
-    always_declare_return_types: true
-    avoid_relative_lib_imports: true
-    avoid_types_as_parameter_names: true
-    iterable_contains_unrelated_type: true
-    avoid_multiple_declarations_per_line: true
+    library_private_types_in_public_api: false
+    always_use_package_imports: false
+    sort_pub_dependencies: false

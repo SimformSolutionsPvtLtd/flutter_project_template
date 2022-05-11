@@ -6,18 +6,17 @@ import 'package:provider/provider.dart';
 /// allows to set system icon theme (light | dark)
 void setSystemIcons({required bool dark}) {
   SystemChrome.setSystemUIOverlayStyle(
-      (dark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light).copyWith(
-    statusBarColor: Colors.transparent,
-    systemNavigationBarColor: Colors.white,
-    systemNavigationBarIconBrightness: Brightness.dark,
-  ));
+    (dark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light).copyWith(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ),
+  );
 }
 
 void setupLogging() {
   Logger.root.level = Level.ALL;
-  Logger.root.onRecord.listen((rec) {
-    print('${rec.level.name}: ${rec.time}: ${rec.message}');
-  });
+  Logger.root.onRecord.listen((rec) {});
 }
 
 /// allows to create a provider with less boilerplate

@@ -19,22 +19,24 @@ void main() {
   debugPaintSizeEnabled = false;
   setupLocator();
   {%- if cookiecutter.sentry_dsn_key == "NA" -%}
-  runApp(FlavoredApp());
+  runApp(const FlavoredApp());
   {% else %}
   SentryFlutter.init(
   (options) => options.dsn = 'https://{{cookiecutter.sentry_dsn_key}}@o0.ingest.sentry.io/0',
-  appRunner: () => runApp(FlavoredApp()),
+  appRunner: () => runApp(const FlavoredApp()),
   );
   {% endif %}
 }
 
 class FlavoredApp extends StatelessWidget {
+  const FlavoredApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return FlavorConfig(
       flavor: Flavor.dev,
       values: FlavorValues(baseUrl: 'https://api.revolve.net',),
-      child: AppConfig(),
+      child: const AppConfig(),
     );
   }
 }

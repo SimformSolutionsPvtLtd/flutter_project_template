@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+
 import '../utils/extensions.dart';
 
 // ignore_for_file: avoid_print
@@ -14,19 +15,19 @@ class APILogger {
     bool isRequest = true,
     int spacerLines = _defaultPadding,
   }) {
-    final apiType = isRequest ? "REQUEST" : "RESPONSE";
-    final log = "flutter: --------------------------------------------\n"
-        "            $apiType\n"
-        "-----------------------------------------------------\n"
-        " Method :$apiMethod\n"
-        "-----------------------------------------------------\n"
-        "Request URL   - $url\n"
-        ":: Parameters - ${parameters.toString()}\n"
-        ":: UTC Time   - ${DateTime.now().toUtc().toString()}\n"
-        "-----------------------------------------------------\n"
-        "flutter: :: Authentication Token: $token\n"
-        "flutter: --------------------------------------------\n"
-        "Body : $responseBody\n";
+    final apiType = isRequest ? 'REQUEST' : 'RESPONSE';
+    final log = 'flutter: --------------------------------------------\n'
+        '            $apiType\n'
+        '-----------------------------------------------------\n'
+        ' Method :$apiMethod\n'
+        '-----------------------------------------------------\n'
+        'Request URL   - $url\n'
+        ':: Parameters - ${parameters.toString()}\n'
+        ':: UTC Time   - ${DateTime.now().toUtc().toString()}\n'
+        '-----------------------------------------------------\n'
+        'flutter: :: Authentication Token: $token\n'
+        'flutter: --------------------------------------------\n'
+        'Body : $responseBody\n';
 
     debugPrint(log.padding(spacerLines, '\n'));
   }
@@ -40,22 +41,22 @@ class APILogger {
     required int statusCode,
     int spacerLines = _defaultPadding,
   }) {
-    final log = "flutter: --------------------------------------------\n"
-        "            REQUEST\n"
-        "-----------------------------------------------------\n"
-        "Request URL   - $url\n"
-        ":: Parameters - ${parameters.toString()}\n"
-        ":: UTC Time   - ${DateTime.now().toUtc().toString()}\n"
-        "-----------------------------------------------------\n"
-        "flutter: :: Authentication Token: $token\n"
-        "flutter: --------------------------------------------\n"
-        "flutter: --------------------------------------------\n"
-        "            ERROR\n"
-        "-----------------------------------------------------\n"
-        "Status Code: $statusCode\n"
-        "Message: $errorString\n"
-        "-----------------------------------------------------\n"
-        "Body : $responseBody\n";
+    final log = 'flutter: --------------------------------------------\n'
+        '            REQUEST\n'
+        '-----------------------------------------------------\n'
+        'Request URL   - $url\n'
+        ':: Parameters - ${parameters.toString()}\n'
+        ':: UTC Time   - ${DateTime.now().toUtc().toString()}\n'
+        '-----------------------------------------------------\n'
+        'flutter: :: Authentication Token: $token\n'
+        'flutter: --------------------------------------------\n'
+        'flutter: --------------------------------------------\n'
+        '            ERROR\n'
+        '-----------------------------------------------------\n'
+        'Status Code: $statusCode\n'
+        'Message: $errorString\n'
+        '-----------------------------------------------------\n'
+        'Body : $responseBody\n';
 
     debugPrint(log.padding(spacerLines, '\n'));
   }

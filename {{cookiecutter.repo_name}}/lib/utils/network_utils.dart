@@ -4,7 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 /// class to check for internet availability
 class NetworkUtils {
   Future<bool> checkIsInternet() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
+    final connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.mobile) {
       return true;
     } else if (connectivityResult == ConnectivityResult.wifi) {
@@ -13,12 +13,11 @@ class NetworkUtils {
     return false;
   }
 
-  dynamic checkInternet(Function func) {
+  dynamic checkInternet(Function(bool) func) {
     checkIsInternet().then((internet) {
       if (internet) {
         func(true);
-      }
-      else{
+      } else {
         func(false);
       }
     });

@@ -14,12 +14,10 @@ abstract class _SplashScreenStore with Store {
   Future<void> changeNetworkState() async {
     state = NetworkState.loading;
     try {
-      //TODO: API call here
+      // TODO(username): API call here
       state = NetworkState.success;
-    } on Exception catch (error, stacktrace) {
+    } catch (error) {
       state = NetworkState.error;
-      print(stacktrace);
-      print(error);
     }
   }
 }
