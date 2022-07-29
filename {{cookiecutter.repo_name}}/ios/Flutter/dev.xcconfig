@@ -6,6 +6,7 @@
 //
 
 // Configuration settings file format documentation can be found at:
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
 #include "Generated.xcconfig"
 FLUTTER_TARGET=lib/main_dev.dart
 
