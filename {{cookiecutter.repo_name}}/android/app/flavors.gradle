@@ -5,10 +5,12 @@ android {
     productFlavors {
         
       uat {
+            applicationIdSuffix ".uat"
             manifestPlaceholders = ["app_icon": "@mipmap/ic_launcher"]
         }
 
       dev {
+            applicationIdSuffix ".dev"
             manifestPlaceholders = ["app_icon": "@mipmap/ic_launcher"]
         }
 

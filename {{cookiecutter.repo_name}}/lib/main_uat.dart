@@ -35,7 +35,7 @@ class FlavoredApp extends StatelessWidget {
     return FlavorConfig(
       flavor: Flavor.uat,
       values: FlavorValues(
-        baseUrl: 'https://api.revolve.net',
+        baseUrl: '{{cookiecutter.base_url}}',
       ),
       child: const AppConfig(),
     );
