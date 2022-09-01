@@ -80,7 +80,7 @@ flutter_sdk_path | Flutter SDK path without spaces before and after <br />(ex-: 
 5. [**logger**](https://pub.dev/packages/logger): Small, easy to use, and extensible logger which prints beautiful logs.
 6. [**flutter_svg**](https://pub.dev/packages/flutter_svg): Draw SVG (and some Android VectorDrawable (XML)) files on a Flutter Widget.
 7. [**spider**](https://pub.dev/packages/spider): Used to reference the assets safely anywhere in the flutter app.
-8. [**effective_dart**](https://pub.dev/packages/effective_dart): Linter rules corresponding to the guidelines in Effective Dart.
+8. [**very_good_analysis**](https://pub.dev/packages/very_good_analysis): Linter rules corresponding to the guidelines in very good analysis.
 
 
 ## Architecture used

@@ -32,7 +32,7 @@ class FlavoredApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlavorConfig(
       flavor: Flavor.prod,
-      values: FlavorValues(baseUrl: 'https://api.revolve.net'),
+      values: FlavorValues(baseUrl: '{{cookiecutter.base_url}}'),
       child: const AppConfig(),
     );
   }

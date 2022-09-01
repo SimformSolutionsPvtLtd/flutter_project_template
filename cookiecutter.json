@@ -13,5 +13,6 @@
   "repo_link": "NA",
   "launch_studio": ["true", "false"],
   "_copy_without_render": [".gradle", "gradle/", "*gradlew", "*gradlew.bat"],
-  "flutter_sdk_path": "NA"
+  "flutter_sdk_path": "NA",
+  "base_url": "https://simform.com"
 }
