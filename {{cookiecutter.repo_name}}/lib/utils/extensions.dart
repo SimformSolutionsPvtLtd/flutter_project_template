@@ -8,7 +8,6 @@ import '../flavors/flavor.dart';
 import '../flavors/flavor_config.dart';
 
 /// provides extension to use dynamic sizes
-// ignore_for_file: type_annotate_public_apis
 extension SdpExtenstion on num {
   /// provides display density based sizes
   double get sdp => this * 0.75 + devicePixelRatio;

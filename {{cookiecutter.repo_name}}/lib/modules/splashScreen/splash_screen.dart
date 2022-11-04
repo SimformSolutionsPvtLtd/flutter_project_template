@@ -28,7 +28,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _loadWidget() async {
     final _duration = Duration(seconds: splashDelay);
-    Timer(_duration, navigationPage);
+    Future.delayed(_duration, () {
+      navigationPage
+    });
   }
 
   void navigationPage() =>
@@ -42,8 +44,14 @@ class _SplashScreenState extends State<SplashScreen> {
           children: <Widget>[
             Image.asset(
               Images.splash,
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
             ),
           ],
         ),
@@ -65,10 +73,11 @@ class AfterSplash extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Observer(
-              builder: (_) => Text(
-                'Network State : ${splashStore.state}',
-                style: const TextStyle(fontSize: 20),
-              ),
+              builder: (_) =>
+                  Text(
+                    'Network State : ${splashStore.state}',
+                    style: const TextStyle(fontSize: 20),
+                  ),
             ),
             const SizedBox(height: 10),
             ElevatedButton(
