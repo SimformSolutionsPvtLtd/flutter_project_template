@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:provider/provider.dart';
 
 import '../../resources/resources.dart';
 import '../../utils/extensions.dart';
+import '../../values/app_theme_store.dart';
 import '../../values/strings.dart';
 import 'splash_screen_store.dart';
 
@@ -57,9 +57,21 @@ class AfterSplash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final splashStore = Provider.of<SplashScreenStore>(context);
+    final splashStore = context.provide<SplashScreenStore>();
+    final themeStore = context.provide<AppThemeStore>();
     return Scaffold(
-      appBar: AppBar(title: const Text(''), automaticallyImplyLeading: false),
+      appBar: AppBar(
+        actions: [
+          Observer(
+            builder: (context) {
+              return Switch.adaptive(
+                value: themeStore.themeMode == ThemeMode.dark,
+                onChanged: (value) => themeStore.changeTheme(isDarkMode: value),
+              );
+            },
+          )
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
