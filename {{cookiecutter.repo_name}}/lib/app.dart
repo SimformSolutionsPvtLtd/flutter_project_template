@@ -1,28 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'locator.dart';
 import 'modules/splashScreen/splash_screen.dart';
 import 'routes.dart';
-import 'services/navigation_service.dart';
-import 'values/app_colors.dart';
+import 'utils/extensions.dart';
+import 'values/app_theme.dart';
+import 'values/app_theme_store.dart';
 
-/// Change name of app as per Project
-class WellnessApp extends StatelessWidget {
-  const WellnessApp({Key? key}) : super(key: key);
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+
+NavigatorState get navigator => navigatorKey.currentState!;
+
+// TODO(user): Change name of app as per Project
+class SimformApp extends StatelessWidget {
+  const SimformApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: AppColors.colorPrimary,
-        colorScheme:
-            ColorScheme.fromSwatch().copyWith(secondary: AppColors.colorAccent),
-        unselectedWidgetColor: AppColors.colorPrimary,
-      ),
-      home: const SplashScreen(),
-      onGenerateRoute: Routes.generateRoute,
-      navigatorKey: locator<NavigationService>().navigatorKey,
+    final themeStore = context.provide<AppThemeStore>();
+    return Observer(
+      builder: (context) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.instance.getLightTheme(),
+          darkTheme: AppTheme.instance.getDarkTheme(),
+          themeMode: themeStore.themeMode,
+          home: const SplashScreen(),
+          onGenerateRoute: Routes.generateRoute,
+          navigatorKey: navigatorKey,
+        );
+      },
     );
   }
 }

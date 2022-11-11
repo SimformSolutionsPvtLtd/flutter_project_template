@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 
+import '../services/secure_storage_service.dart';
 import '../utils/network_utils.dart';
-import '../utils/shared_preferences_helper.dart';
+import '../values/enumeration.dart';
 import 'api_logger.dart';
 
 class HeaderInterceptor extends Interceptor {
@@ -18,10 +19,10 @@ class HeaderInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final internet = await NetworkUtils().checkIsInternet();
+    final internet = await NetworkUtils.instance.checkHasInternet();
     if (internet) {
       final token = await checkToken();
-      if (token.isNotEmpty) {
+      if (token?.isNotEmpty ?? false) {
         options.headers.putIfAbsent('Authorization', () => token);
       }
       _logger.printSuccessLog(
@@ -39,7 +40,7 @@ class HeaderInterceptor extends Interceptor {
 
   @override
   void onResponse(
-    Response response,
+    Response<dynamic> response,
     ResponseInterceptorHandler handler,
   ) {
     if (response.statusCode == 401) {
@@ -78,6 +79,6 @@ class HeaderInterceptor extends Interceptor {
     handler.reject(err);
   }
 
-  Future<String> checkToken() async =>
-      SharedPreferencesHelper.instance.getAuthToken();
+  Future<String?> checkToken() async => SecureStorageService.instance
+      .getValue(key: SecureStorageKeys.kAccessToken);
 }

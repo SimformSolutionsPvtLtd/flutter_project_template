@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
-import 'package:provider/provider.dart';
 
 /// allows to set system icon theme (light | dark)
 void setSystemIcons({required bool dark}) {
@@ -19,10 +18,6 @@ void setupLogging() {
   Logger.root.onRecord.listen((rec) {});
 }
 
-/// allows to create a provider with less boilerplate
-Provider<T> createProviderFor<T>(T provide, {Dispose<T>? dispose}) =>
-    Provider<T>(create: (context) => provide, dispose: dispose);
-
 void setAppOrientation() {
   SystemChrome.setPreferredOrientations([
   {%- if cookiecutter.include_portraitUp_orientation == "y" -%}
@@ -39,3 +34,8 @@ void setAppOrientation() {
   {% endif %}
   ]);
 }
+
+String enumToString(Object o) => o.toString().split('.').last;
+
+T enumFromString<T>(String key, List<T> values) =>
+    values.firstWhere((v) => key == enumToString(v!));

@@ -41,6 +41,7 @@ launch_studio() {
 }
 
 flutter pub get
+flutter pub global activate flutter_gen
 flutter pub run build_runner build --delete-conflicting-outputs
 cd ios/
 pod install

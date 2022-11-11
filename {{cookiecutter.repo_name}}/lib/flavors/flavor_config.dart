@@ -5,11 +5,11 @@ import '../flavors/flavor_values.dart';
 
 class FlavorConfig extends InheritedWidget {
   FlavorConfig({
-    Key? key,
+    super.key,
     required this.flavor,
     required this.values,
     Widget? child,
-  }) : super(key: key, child: child!);
+  }) : super(child: child!);
   final Flavor flavor;
 
   final FlavorValues values;

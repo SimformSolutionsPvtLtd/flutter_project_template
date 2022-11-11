@@ -3,18 +3,21 @@ android {
     flavorDimensions "mode"
 
     productFlavors {
-        
-      uat {
+
+        uat {
             applicationIdSuffix ".uat"
+            flutter.target "lib/main_uat.dart"
             manifestPlaceholders = ["app_icon": "@mipmap/ic_launcher"]
         }
 
-      dev {
+        dev {
             applicationIdSuffix ".dev"
+            flutter.target "lib/main_dev.dart"
             manifestPlaceholders = ["app_icon": "@mipmap/ic_launcher"]
         }
 
-      prod {
+        prod {
+            flutter.target "lib/main_prod.dart"
             manifestPlaceholders = ["app_icon": "@mipmap/ic_launcher"]
         }
 

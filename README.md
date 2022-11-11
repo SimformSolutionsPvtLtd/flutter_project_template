@@ -68,8 +68,6 @@ target_ios_device | ios device support | iPhone/iPod touch
 sentry_dsn_key | Sentry DSN key for crash reporting | Sentry DSN
 repo_link | Repository link to connect project with remote | NA
 launch_studio | Open Android Studio after project is created. <b>Works only for MacOS</b> | 1 (false)
-flutter_sdk_path | Flutter SDK path without spaces before and after <br />(ex-: Directory1/Directory2/flutter) | NA
-
 
 ## Dependencies used in the project with their usage
 
@@ -79,9 +77,9 @@ flutter_sdk_path | Flutter SDK path without spaces before and after <br />(ex-: 
 4. [**provider**](https://pub.dev/packages/provider): A mixture between dependency injection (DI) and state management, built with widgets for widgets.
 5. [**logger**](https://pub.dev/packages/logger): Small, easy to use, and extensible logger which prints beautiful logs.
 6. [**flutter_svg**](https://pub.dev/packages/flutter_svg): Draw SVG (and some Android VectorDrawable (XML)) files on a Flutter Widget.
-7. [**spider**](https://pub.dev/packages/spider): Used to reference the assets safely anywhere in the flutter app.
+7. [**flutter_gen**](https://pub.dev/packages/flutter_gen): Used to reference the assets safely anywhere in the flutter app.
 8. [**very_good_analysis**](https://pub.dev/packages/very_good_analysis): Linter rules corresponding to the guidelines in very good analysis.
-
+9. [**intl**](https://pub.dev/packages/intl): Used for localization and other date-time utils
 
 ## Architecture used
 
@@ -91,6 +89,14 @@ flutter_sdk_path | Flutter SDK path without spaces before and after <br />(ex-: 
 *  Open **set-githooks.bash** file and Run it as highlighted in screenshot.
 
 ![Screenshot](https://raw.githubusercontent.com/SimformSolutionsPvtLtd/flutter_project_template/develop/preview/githooks_preview.png)
+
+## Using intl for localization
+* Install flutter_intl plugin from android studio plugin market-place.
+* Run `flutter pub global activate intl_utils` command (required only once).
+* Hover over any string and click on the light-bulb. Then click on the extract to arb file.
+* Generated string can be used with `Str.of(context).stringName` or `Str.current.stringName`
+* Locate and add `.arb` file to git
+* Tip -: To generate none-generated strings, press enter at the end of the .arb file and save, it will generate all strings.
 
 ## Permissions
 
