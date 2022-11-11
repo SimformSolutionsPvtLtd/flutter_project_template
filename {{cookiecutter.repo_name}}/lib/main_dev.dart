@@ -8,16 +8,16 @@ import 'app_config.dart';
 import 'flavors/flavor.dart';
 import 'flavors/flavor_config.dart';
 import 'flavors/flavor_values.dart';
-import 'locator.dart';
-import 'utils/helpers.dart';
+import 'services/shared_preferences_service.dart';
+import 'utils/helpers/helpers.dart';
 
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesService.instance.initialise();
   setAppOrientation();
   setupLogging();
   debugPaintSizeEnabled = false;
-  setupLocator();
   {%- if cookiecutter.sentry_dsn_key == "NA" -%}
   runApp(const FlavoredApp());
   {% else %}
@@ -29,7 +29,7 @@ void main() {
 }
 
 class FlavoredApp extends StatelessWidget {
-  const FlavoredApp({Key? key}) : super(key: key);
+  const FlavoredApp({super.key});
 
   @override
   Widget build(BuildContext context) {

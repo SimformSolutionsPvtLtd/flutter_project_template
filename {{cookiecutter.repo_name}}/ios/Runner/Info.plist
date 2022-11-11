@@ -27,9 +27,20 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
+    <array>
+    {%- if cookiecutter.include_portraitUp_orientation == "y" -%}
+    	<string>UIInterfaceOrientationPortrait</string>
+    {% endif %}
+      {%- if cookiecutter.include_portraitDown_orientation == "y" -%}
+    	<string>UIInterfaceOrientationPortraitUpsideDown</string>
+    {% endif %}
+    {%- if cookiecutter.include_landscapeLeft_orientation == "y" -%}
+    	<string>UIInterfaceOrientationLandscapeLeft</string>
+    {% endif %}
+    {%- if cookiecutter.include_landscapeRight_orientation == "y" -%}
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    {% endif %}
+    </array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

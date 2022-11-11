@@ -3,15 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../app_config.dart';
 import '../flavors/flavor.dart';
 import '../flavors/flavor_config.dart';
-
-/// provides extension to use dynamic sizes
-extension SdpExtenstion on num {
-  /// provides display density based sizes
-  double get sdp => this * 0.75 + devicePixelRatio;
-}
 
 /// provides extension to get a dependency from provider
 extension ContextExtension on BuildContext {
@@ -42,6 +35,12 @@ extension ContextExtension on BuildContext {
       Navigator.of(this).pushNamedAndRemoveUntil(routeName, (route) => false);
 
   void pop() => Navigator.pop(this);
+
+  bool get isLandscape =>
+      MediaQuery.of(this).orientation == Orientation.landscape;
+
+  bool get isPortrait =>
+      MediaQuery.of(this).orientation == Orientation.portrait;
 }
 
 /// provides extension to get a dependency from provider
@@ -60,7 +59,7 @@ extension StatefulWidgetExtension on State {
 
 /// allows to create [MultiProvider] with less boilerplate
 extension ProviderExtension<T> on Widget {
-  Widget withProviders(List<Provider> providers) => MultiProvider(
+  Widget withProviders(List<Provider<T>> providers) => MultiProvider(
         providers: providers,
         child: this,
       );
@@ -100,4 +99,13 @@ extension StringExtension on String {
   void copyToClipboard() => Clipboard.setData(
         ClipboardData(text: this),
       );
+}
+
+///Extension on nullable strings
+extension NullableStringExtension on String? {
+  ///checks if string is null or empty.
+  bool get isNullOrEmpty => this == null || (this?.isEmpty ?? true);
+
+  ///checks if string is not null and not empty.
+  bool get isNotNullAndNotEmpty => this != null && (this?.isNotEmpty ?? false);
 }

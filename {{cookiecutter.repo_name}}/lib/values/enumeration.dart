@@ -9,3 +9,7 @@ extension NetworkStateExtension on NetworkState {
 
   bool get isFailed => this == NetworkState.error;
 }
+
+enum SharedPrefsKeys { isLoggedIn }
+
+enum SecureStorageKeys { kAccessToken }

@@ -1,21 +1,34 @@
-import 'package:chq_flutter/values/navigation_paths.dart';
 import 'package:flutter/material.dart';
+
 import 'modules/splashScreen/splash_screen.dart';
 import 'modules/splashScreen/splash_screen_store.dart';
+import 'utils/common_widgets/invalid_route.dart';
 import 'utils/extensions.dart';
+import 'values/strings.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    Route<dynamic> getRoute({
+      required Widget widget,
+      bool fullscreenDialog = false,
+    }) {
+      return MaterialPageRoute<void>(
+        builder: (context) => widget,
+        settings: settings,
+        fullscreenDialog: fullscreenDialog,
+      );
+    }
+
     switch (settings.name) {
-      case AppNavigationPaths.txtAfterSplash:
-        return MaterialPageRoute<void>(
-          builder: (context) =>
-              const AfterSplash().withProvider(SplashScreenStore()),
+      case AppRoutes.txtAfterSplash:
+        return getRoute(
+          widget: const AfterSplash().withProvider(SplashScreenStore()),
         );
-    // Note: this will never be used. This is just for detecting
-    // invalid Routes
+
+      /// An invalid route. User shouldn't see this, it's for debugging purpose
+      /// only.
       default:
-        return MaterialPageRoute<void>(builder: (_) => const SplashScreen());
+        return getRoute(widget: const InvalidRoute());
     }
   }
 }
