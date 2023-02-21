@@ -21,7 +21,7 @@ class WellnessApp extends StatelessWidget {
         unselectedWidgetColor: AppColors.colorPrimary,
       ),
       home: const SplashScreen(),
-      routes: Routes.routes,
+      onGenerateRoute: Routes.generateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
     );
   }

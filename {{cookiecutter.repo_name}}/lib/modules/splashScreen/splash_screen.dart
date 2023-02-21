@@ -28,9 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _loadWidget() async {
     final _duration = Duration(seconds: splashDelay);
-    Future.delayed(_duration, () {
-      navigationPage
-    });
+    Future.delayed(_duration, navigationPage);
   }
 
   void navigationPage() =>

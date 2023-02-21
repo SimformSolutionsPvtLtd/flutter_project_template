@@ -15,7 +15,6 @@ class Routes {
     // Note: this will never be used. This is just for detecting
     // invalid Routes
       default:
-      // return MaterialPageRoute(builder: (_) => InvalidRoute());
         return MaterialPageRoute<void>(builder: (_) => const SplashScreen());
     }
   }
