@@ -6,41 +6,39 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.2 <3.0.0"
+  sdk: '>=3.0.6 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   provider: 6.0.5 # Dependency Injection
-  logging: 1.1.1 # Logger
-  intl: 0.18.0 # Localization
-  connectivity_plus: 3.0.3 # Internet connection check
-  shared_preferences: 2.0.17 # Local storage
-  json_annotation: 4.8.0 # Annotations for json generator
-  flutter_svg: 2.0.1 # Svg to widget
-  sentry_flutter: 6.20.1 # Crash analytics
+  logging: 1.2.0 # Logger
+  intl: 0.18.1 # Localization
+  connectivity_plus: 4.0.2 # Internet connection check
+  shared_preferences: 2.2.0 # Local storage
+  json_annotation: 4.8.1 # Annotations for json generator
+  flutter_svg: 2.0.7 # Svg to widget
+  sentry_flutter: 7.7.0 # Crash analytics
   retrofit: 4.0.1 # Network calls
-  mobx: 2.1.4 # State manager
+  mobx: 2.2.0 # State manager
   flutter_mobx: 2.0.6+5 # State manager widgets
   flutter_secure_storage: 8.0.0 # Local storage for sensitive data
-  dio: 5.0.0 # Added to avoid warning
+  dio: 5.3.2 # Added to avoid warning
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  retrofit_generator: 5.0.0 # Network calls gen
-  build_runner: 2.3.3 # Code generator
-  json_serializable: 6.6.1 # Json serialization gen
-  mobx_codegen: 2.1.1 # Mobx state manager gen
-  flutter_gen_runner: 5.2.0 # Asset code gen
-  very_good_analysis: 4.0.0+1 # Linter
+  retrofit_generator: 7.0.8 # Network calls gen
+  build_runner: 2.4.6 # Code generator
+  json_serializable: 6.7.1 # Json serialization gen
+  mobx_codegen: 2.3.0 # Mobx state manager gen
+  flutter_gen_runner: 5.3.1 # Asset code gen
+  very_good_analysis: 5.0.0+1 # Linter
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/fonts/
     - assets/images/
-    - assets/vectors/
 
 flutter_gen:
   integrations:

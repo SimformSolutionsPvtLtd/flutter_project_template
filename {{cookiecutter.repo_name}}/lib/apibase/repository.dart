@@ -42,7 +42,7 @@ class Repository {
       }
     } on String {
       rethrow;
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       if (error.response == null) {
         throw Exception(ApiErrorStrings.noInternetMsg);
       }
@@ -63,4 +63,3 @@ class Repository {
     }
   }
 }
-

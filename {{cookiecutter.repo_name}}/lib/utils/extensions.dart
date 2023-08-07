@@ -41,6 +41,8 @@ extension ContextExtension on BuildContext {
 
   bool get isPortrait =>
       MediaQuery.of(this).orientation == Orientation.portrait;
+
+  Size get screenSize => MediaQuery.of(this).size;
 }
 
 /// provides extension to get a dependency from provider
