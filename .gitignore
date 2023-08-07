@@ -58,6 +58,7 @@ android/jks/*.jks
 android/keystore.properties
 drafts/
 logs/
+gen/
 
 **/*.g.dart
 **/*.chopper.dart

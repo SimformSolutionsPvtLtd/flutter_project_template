@@ -5,7 +5,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../utils/extensions.dart';
+{%- if cookiecutter.is_theme_enable != false -%}
 import '../../values/app_theme_store.dart';
+{% endif %}
 import '../../values/strings.dart';
 import 'splash_screen_store.dart';
 
@@ -37,21 +39,21 @@ class _SplashScreenState extends State<SplashScreen> {
     return ColoredBox(
       color: Colors.white,
       child: Assets.images.splash.image(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        height: context.screenSize.height,
+        width: context.screenSize.width,
       ),
     );
   }
 }
 
-class AfterSplash extends StatefulWidget {
-  const AfterSplash({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<AfterSplash> createState() => _AfterSplashState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _AfterSplashState extends State<AfterSplash> {
+class _HomeScreenState extends State<HomeScreen> {
   late SplashScreenStore splashStore;
 
   @override
@@ -68,8 +70,11 @@ class _AfterSplashState extends State<AfterSplash> {
 
   @override
   Widget build(BuildContext context) {
+    {%- if cookiecutter.is_theme_enable != false -%}
     final themeStore = context.provide<AppThemeStore>();
+    {% endif %}
     return Scaffold(
+      {%- if cookiecutter.is_theme_enable != false -%}
       appBar: AppBar(
         actions: [
           Observer(
@@ -82,6 +87,7 @@ class _AfterSplashState extends State<AfterSplash> {
           )
         ],
       ),
+      {% endif %}
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

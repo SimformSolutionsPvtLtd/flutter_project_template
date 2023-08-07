@@ -22,7 +22,7 @@ class Routes {
     switch (settings.name) {
       case AppRoutes.txtAfterSplash:
         return getRoute(
-          widget: const AfterSplash().withProvider(SplashScreenStore()),
+          widget: const HomeScreen().withProvider(SplashScreenStore()),
         );
 
       /// An invalid route. User shouldn't see this, it's for debugging purpose

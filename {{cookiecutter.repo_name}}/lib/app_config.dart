@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 import 'app.dart';
 import 'utils/extensions.dart';
+{%- if cookiecutter.is_theme_enable != false -%}
 import 'values/app_theme_store.dart';
+{% endif %}
 
-/// represents the pixel ratio of the device
-double devicePixelRatio = 0;
 
 class AppConfig extends StatelessWidget {
   const AppConfig({super.key});
@@ -19,13 +18,15 @@ class AppConfig extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return GestureDetector(
-      onTap: context.hideKeyboard,
-      child: Builder(
-        builder: (ctx) => Provider(
-          create: (_) => AppThemeStore(),
-          child: const SimformApp(),
-        ),
-      ),
+        onTap: context.hideKeyboard,
+        child: Builder(
+            builder: (ctx) => {%- if cookiecutter.is_theme_enable != false -%}
+            const App().withProvider(AppThemeStore(),),
+        {% else %}
+        const App(),
+    {% endif %}
+    )
+    ,
     );
   }
 }

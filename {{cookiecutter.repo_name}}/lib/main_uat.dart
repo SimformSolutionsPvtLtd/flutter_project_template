@@ -10,6 +10,7 @@ import 'flavors/flavor_config.dart';
 import 'flavors/flavor_values.dart';
 import 'services/shared_preferences_service.dart';
 import 'utils/helpers/helpers.dart';
+import 'values/constants.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,10 +36,9 @@ class FlavoredApp extends StatelessWidget {
     return FlavorConfig(
       flavor: Flavor.uat,
       values: FlavorValues(
-        baseUrl: '{{cookiecutter.base_url}}',
+        baseUrl: Constants.baseUrl,
       ),
       child: const AppConfig(),
     );
   }
 }
-

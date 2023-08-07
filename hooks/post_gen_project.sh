@@ -40,13 +40,22 @@ launch_studio() {
     fi                                                                      
 }
 
+check_theme_flag() {
+  # Remove theme related file if theme is not enabled
+  if [ "{{ cookiecutter.is_theme_enable }}" = False ]; then
+     rm -f "lib/values/app_theme.dart"
+     rm -f "lib/values/app_theme_store.dart"
+  fi
+}
+
+check_theme_flag
 flutter pub get
 flutter pub global activate flutter_gen
-flutter pub run build_runner build --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
 cd ios/
 pod install
 cd ..
-flutter format lib
+dart format lib
 initialize_git
 {%- if cookiecutter.repo_link != "NA" -%}
 connect_git_repo
