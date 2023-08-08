@@ -1,5 +1,6 @@
 import re
 import sys
+import os.path
 
 # Check the app name
 
@@ -27,7 +28,7 @@ REPO_NAME_REGEX = r'^\w+$'
 
 repo_name = '{{ cookiecutter.repo_name }}'
 
-if (not re.search(REPO_NAME_REGEX, repo_name)):
+if not re.search(REPO_NAME_REGEX, repo_name):
     print(CRED + '\nERROR: please avoid using any special characters and space in your repo name!' + CEND)
     print(CRED + 'Include only alphanumeric characters and underscore in repo name.\n' + CEND)
 
@@ -41,7 +42,7 @@ PACKAGE_REGEX = r'[^A-Za-z0-9.]'
 package_name = '{{ cookiecutter.bundle_identifier }}'
 
 if re.search(PACKAGE_REGEX, package_name):
-    print(CRED + 'ERROR: %s is not a valid Android package name!'% package_name + CEND )
+    print(CRED + 'ERROR: %s is not a valid Android package name!' % package_name + CEND)
     print(CRED + 'Avoid using any special characters. Only alphanumeric characters are allowed.' + CEND)
 
     # Exits with status 1 to indicate failure
@@ -51,11 +52,25 @@ REPO_LINK_REGEX = r'((git@|http(s)?:\/\/)([\w\.@]+)(\/|:))([\w,\-,\_]+)\/([\w,\-
 
 repo_link = '{{ cookiecutter.repo_link }}'
 
-if repo_link != 'NA' :
-    if (not re.search(REPO_LINK_REGEX, repo_link)):
+if repo_link != 'NA' and not re.search(REPO_LINK_REGEX, repo_link):
         print(CRED + '\n ERROR: %s is not a valid repository URL! \n' % repo_link + CEND)
 
         # Exits with status 1 to indicate failure
         sys.exit(1)
 
-print (CGREEN + 'Proceeding with app name: {}, package name: {}'.format(app_name, package_name) + CEND)
+print(CGREEN + 'Proceeding with app name: {}, package name: {}'.format(app_name, package_name) + CEND)
+
+splash_image_path = '{{ cookiecutter.splash_image_path }}'
+
+if splash_image_path == 'Required':
+    print(CRED + '\n Splash image is required to create project \n' + CEND)
+    # Exits with status 1 to indicate failure
+    sys.exit(1)
+else:
+    if not os.path.exists(splash_image_path):
+        print(CRED + '\n Provided image path does not exists \n' + CEND)
+        sys.exit(1)
+    fileType = os.path.splitext(splash_image_path)[-1].lower()
+    if not (fileType == '.jpeg' or fileType == '.jpg' or fileType == '.png'):
+        print(CRED + '\n Please provide valid image file \n' + CEND)
+        sys.exit(1)
