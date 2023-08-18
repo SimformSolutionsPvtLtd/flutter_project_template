@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 
-import '../services/secure_storage_service.dart';
+import '../services/secure_storage.dart';
 import '../utils/network_utils.dart';
 import '../values/enumeration.dart';
 import 'api_logger.dart';
@@ -79,6 +79,6 @@ class HeaderInterceptor extends Interceptor {
     handler.reject(err);
   }
 
-  Future<String?> checkToken() async => SecureStorageService.instance
-      .getValue(key: SecureStorageKeys.kAccessToken);
+  Future<String?> checkToken() async =>
+      SecureStorage.getValue(key: SecureStorageKeys.kAccessToken);
 }

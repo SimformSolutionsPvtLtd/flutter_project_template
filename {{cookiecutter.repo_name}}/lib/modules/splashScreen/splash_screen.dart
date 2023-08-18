@@ -22,17 +22,16 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
     _loadWidget();
   }
 
-  Future<void> _loadWidget() async {
+  void _loadWidget() {
     // This will remove splash screen after 3 seconds and push next screen.
     Timer(const Duration(seconds: 3), navigationPage);
   }
 
-  void navigationPage() =>
-      context.pushReplacementNamed(AppRoutes.txtAfterSplash);
+  Future<void> navigationPage() async =>
+      context.pushReplacementNamed<void, void>(AppRoutes.txtAfterSplash);
 
   @override
   Widget build(BuildContext context) {

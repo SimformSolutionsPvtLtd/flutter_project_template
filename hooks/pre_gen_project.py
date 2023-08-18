@@ -18,6 +18,9 @@ if re.search(APP_NAME_REGEX, app_name):
     # Exits with status 1 to indicate failure
     sys.exit(1)
 
+# Strip spaces from app_name to create a name that is suitable to be used as class name.
+{{ cookiecutter.update({"_app_class_name": cookiecutter.app_name.replace(' ', '')}) }}
+
 # Check the repo name
 
 REPO_NAME_REGEX = r'^\w+$'

@@ -25,38 +25,35 @@ extension ContextExtension on BuildContext {
     }
   }
 
-  void pushNamed(String routeName, {Object? arguments}) =>
-      Navigator.of(this).pushNamed(routeName, arguments: arguments);
+  Future<T?> pushNamed<T>(String routeName, {Object? arguments}) =>
+      Navigator.of(this).pushNamed<T>(routeName, arguments: arguments);
 
-  void pushReplacementNamed(String routeName) =>
-      Navigator.of(this).pushReplacementNamed(routeName);
+  Future<T?> pushReplacementNamed<T, TO>(String routeName) =>
+      Navigator.of(this).pushReplacementNamed<T, TO>(routeName);
 
-  void pushAndRemoveUntil(String routeName) =>
-      Navigator.of(this).pushNamedAndRemoveUntil(routeName, (route) => false);
+  Future<T?> pushAndRemoveUntil<T>(String routeName) => Navigator.of(this)
+      .pushNamedAndRemoveUntil<T>(routeName, (route) => false);
 
-  void pop() => Navigator.pop(this);
+  void pop<T>([T? result]) => Navigator.pop<T>(this, result);
 
   bool get isLandscape =>
-      MediaQuery.of(this).orientation == Orientation.landscape;
+      MediaQuery.orientationOf(this) == Orientation.landscape;
 
-  bool get isPortrait =>
-      MediaQuery.of(this).orientation == Orientation.portrait;
+  bool get isPortrait => MediaQuery.orientationOf(this) == Orientation.portrait;
 
-  Size get screenSize => MediaQuery.of(this).size;
+  Size get screenSize => MediaQuery.sizeOf(this);
 }
 
 /// provides extension to get a dependency from provider
 extension StatefulWidgetExtension on State {
   /// returns object of type [T] from provider
-  T provide<T>() => Provider.of<T>(context, listen: false);
+  T provide<T>({bool? listen}) => context.provide<T>(listen: listen);
 
   /// allows to change field focus from one [FocusNode] to another
-  void fieldFocusChange({required FocusNode from, required FocusNode to}) {
-    from.unfocus();
-    FocusScope.of(context).requestFocus(to);
-  }
+  void fieldFocusChange({required FocusNode from, required FocusNode to}) =>
+      context.fieldFocusChange(from: from, to: to);
 
-  bool get isDev => FlavorConfig.of(context)!.flavor == Flavor.dev;
+  bool get isDev => FlavorConfig.of(context)?.flavor == Flavor.dev;
 }
 
 /// allows to create [MultiProvider] with less boilerplate

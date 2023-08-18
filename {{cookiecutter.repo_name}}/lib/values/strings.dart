@@ -1,12 +1,13 @@
 class AppRoutes {
-  AppRoutes._();
+  const AppRoutes._();
 
   static const String txtAfterSplash = '/AfterSplash';
 }
 
 class ApiErrorStrings {
-  ApiErrorStrings._();
+  const ApiErrorStrings._();
 
   static const String noInternetMsg = 'No internet connection.';
   static const String somethingWrongErrorMsg =
-      'Something went wrong! Please try after some time.';}
+      'Something went wrong! Please try after some time.';
+}
