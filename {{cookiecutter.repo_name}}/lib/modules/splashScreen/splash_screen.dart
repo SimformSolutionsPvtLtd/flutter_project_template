@@ -8,6 +8,7 @@ import '../../utils/extensions.dart';
 {%- if cookiecutter.is_theme_enable != false -%}
 import '../../values/app_theme_store.dart';
 {% endif %}
+import '../../values/constants.dart';
 import '../../values/strings.dart';
 import 'splash_screen_store.dart';
 
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _loadWidget() {
     // This will remove splash screen after 3 seconds and push next screen.
-    Timer(const Duration(seconds: 3), navigationPage);
+    Timer(Constants.splashDuration, navigationPage);
   }
 
   Future<void> navigationPage() async =>
@@ -38,8 +39,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return ColoredBox(
       color: Colors.white,
       child: Assets.images.splash.image(
-        height: context.screenSize.height,
-        width: context.screenSize.width,
+        height: context.screenHeight,
+        width: context.screenWidth,
       ),
     );
   }

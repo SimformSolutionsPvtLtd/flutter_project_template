@@ -1,13 +1,16 @@
-enum NetworkState { idle, loading, success, error }
+enum NetworkState {
+  idle,
+  loading,
+  success,
+  error;
 
-extension NetworkStateExtension on NetworkState {
-  bool get isIdle => this == NetworkState.idle;
+  bool get isIdle => this == idle;
 
-  bool get isLoading => this == NetworkState.loading;
+  bool get isLoading => this == loading;
 
-  bool get isSuccessful => this == NetworkState.success;
+  bool get isSuccessful => this == success;
 
-  bool get isFailed => this == NetworkState.error;
+  bool get isFailed => this == error;
 }
 
 enum SharedPrefsKeys { isLoggedIn }

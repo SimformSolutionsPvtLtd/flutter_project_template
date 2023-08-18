@@ -8,8 +8,17 @@ import '../flavors/flavor_config.dart';
 
 /// provides extension to get a dependency from provider
 extension ContextExtension on BuildContext {
-  /// returns object of type [T] from provider
+  /// returns object of type [T] from provider. Throws exception if not found.
   T provide<T>({bool? listen}) => Provider.of<T>(this, listen: listen ?? false);
+
+  /// Looks for a [Provider] of type [T] in the tree. Returns null if not found.
+  T? maybeProvide<T>({bool? listen}) {
+    try {
+      return Provider.of<T>(this, listen: listen ?? false);
+    } catch (_) {
+      return null;
+    }
+  }
 
   /// allows to change field focus from one [FocusNode] to another
   void fieldFocusChange({required FocusNode from, required FocusNode to}) {
@@ -42,12 +51,30 @@ extension ContextExtension on BuildContext {
   bool get isPortrait => MediaQuery.orientationOf(this) == Orientation.portrait;
 
   Size get screenSize => MediaQuery.sizeOf(this);
+
+  double get screenWidth => MediaQuery.sizeOf(this).width;
+
+  double get screenHeight => MediaQuery.sizeOf(this).height;
+
+  Size screenSizeFraction(double fraction) {
+    final size = MediaQuery.sizeOf(this);
+    return Size(size.width * fraction, size.height * fraction);
+  }
+
+  double screenWidthFraction(double fraction) =>
+      MediaQuery.sizeOf(this).width * fraction;
+
+  double screenHeightFraction(double fraction) =>
+      MediaQuery.sizeOf(this).height * fraction;
 }
 
 /// provides extension to get a dependency from provider
 extension StatefulWidgetExtension on State {
-  /// returns object of type [T] from provider
+  /// returns object of type [T] from provider. Throws exception if not found.
   T provide<T>({bool? listen}) => context.provide<T>(listen: listen);
+
+  /// Looks for a [Provider] of type [T] in the tree. Returns null if not found.
+  T? maybeProvide<T>({bool? listen}) => context.maybeProvide<T>(listen: listen);
 
   /// allows to change field focus from one [FocusNode] to another
   void fieldFocusChange({required FocusNode from, required FocusNode to}) =>
@@ -84,6 +111,8 @@ extension DateUtils on DateTime {
 }
 
 extension StringExtension on String {
+  bool toBool() => toLowerCase() == 'true';
+
   String lowerCaseFirstLatter() {
     return '${this[0].toLowerCase()}${substring(1)}';
   }

@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'modules/splashScreen/splash_screen.dart';
 import 'routes.dart';
+import 'services/snack_bar_messenger.dart';
 {%- if cookiecutter.is_theme_enable != false -%}
 import 'utils/extensions.dart';
 import 'values/app_theme.dart';
@@ -32,6 +33,7 @@ class {{cookiecutter._app_class_name}}App extends StatelessWidget {
           home: const SplashScreen(),
           onGenerateRoute: Routes.generateRoute,
           navigatorKey: navigatorKey,
+          scaffoldMessengerKey: SnackBarMessenger.key,
         );
       },
     );
@@ -41,6 +43,7 @@ class {{cookiecutter._app_class_name}}App extends StatelessWidget {
       home: const SplashScreen(),
       onGenerateRoute: Routes.generateRoute,
       navigatorKey: navigatorKey,
+      scaffoldMessengerKey: SnackBarMessenger.key,
     );
     {% endif %}
   }
