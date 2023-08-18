@@ -7,13 +7,13 @@ import 'app_config.dart';
 import 'flavors/flavor.dart';
 import 'flavors/flavor_config.dart';
 import 'flavors/flavor_values.dart';
-import 'services/shared_preferences_service.dart';
+import 'services/shared_prefs.dart';
 import 'utils/helpers/helpers.dart';
 import 'values/constants.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SharedPreferencesService.instance.initialise();
+  await SharedPrefs.initialise();
   setAppOrientation();
   setupLogging();
   {%- if cookiecutter.sentry_dsn_key == "NA" -%}

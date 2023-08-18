@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTheme {
-  AppTheme._();
+  const AppTheme._();
 
-  static final AppTheme _instance = AppTheme._();
-
-  static AppTheme get instance => _instance;
+  static const AppTheme instance = AppTheme._();
 
   ThemeData getLightTheme() {
     return ThemeData(
@@ -18,7 +16,5 @@ class AppTheme {
     );
   }
 
-  ThemeData getDarkTheme() {
-    return ThemeData.dark();
-  }
+  ThemeData getDarkTheme() => ThemeData.dark();
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+{%- if cookiecutter.is_theme_enable != false -%}
 import 'package:flutter_mobx/flutter_mobx.dart';
+{% endif %}
 
 import 'modules/splashScreen/splash_screen.dart';
 import 'routes.dart';
@@ -13,9 +15,8 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
 NavigatorState get navigator => navigatorKey.currentState!;
 
-// TODO(user): Change name of app as per Project
-class App extends StatelessWidget {
-  const App({super.key});
+class {{cookiecutter._app_class_name}}App extends StatelessWidget {
+  const {{cookiecutter._app_class_name}}App({super.key});
 
   @override
   Widget build(BuildContext context) {

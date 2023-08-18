@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 {%- if cookiecutter.sentry_dsn_key != "NA" -%}
 import 'package:sentry_flutter/sentry_flutter.dart';
 {% endif %}
@@ -8,16 +7,15 @@ import 'app_config.dart';
 import 'flavors/flavor.dart';
 import 'flavors/flavor_config.dart';
 import 'flavors/flavor_values.dart';
-import 'services/shared_preferences_service.dart';
+import 'services/shared_prefs.dart';
 import 'utils/helpers/helpers.dart';
 import 'values/constants.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SharedPreferencesService.instance.initialise();
+  await SharedPrefs.initialise();
   setAppOrientation();
   setupLogging();
-  debugPaintSizeEnabled = false;
   {%- if cookiecutter.sentry_dsn_key == "NA" -%}
   runApp(const FlavoredApp());
   {% else %}
