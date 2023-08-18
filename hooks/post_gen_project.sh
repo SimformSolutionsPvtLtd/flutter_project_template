@@ -70,6 +70,7 @@ fetch_splash_image
 flutter pub get
 flutter pub global activate flutter_gen
 dart run build_runner build --delete-conflicting-outputs
+dart run flutter_launcher_icons
 cd ios/
 pod install
 cd ..

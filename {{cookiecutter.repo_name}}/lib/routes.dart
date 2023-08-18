@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'modules/splashScreen/splash_screen.dart';
-import 'modules/splashScreen/splash_screen_store.dart';
+import 'modules/splash_screen/splash_screen.dart';
+import 'modules/splash_screen/splash_screen_store.dart';
 import 'utils/common_widgets/invalid_route.dart';
 import 'utils/extensions.dart';
 import 'values/strings.dart';

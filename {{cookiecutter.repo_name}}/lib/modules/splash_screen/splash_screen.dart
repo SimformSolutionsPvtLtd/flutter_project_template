@@ -37,9 +37,12 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return ColoredBox(
       color: Colors.white,
-      child: Assets.images.splash.image(
-        height: context.screenSize.height,
-        width: context.screenSize.width,
+      child:  Center(
+        child: Assets.images.splash.image(
+          height: context.screenSize.width * 0.5,
+          width: context.screenSize.width * 0.5,
+          fit: BoxFit.scaleDown,
+        ),
       ),
     );
   }

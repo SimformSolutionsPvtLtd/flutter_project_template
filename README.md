@@ -80,6 +80,7 @@ launch_studio | Open Android Studio after project is created. <b>Works only for 
 7. [**flutter_gen**](https://pub.dev/packages/flutter_gen): Used to reference the assets safely anywhere in the flutter app.
 8. [**very_good_analysis**](https://pub.dev/packages/very_good_analysis): Linter rules corresponding to the guidelines in very good analysis.
 9. [**intl**](https://pub.dev/packages/intl): Used for localization and other date-time utils
+10. [**flutter_launcher_icons**](https://pub.dev/packages/flutter_launcher_icons): Update your Flutter app's launcher icon
 
 ## Architecture used
 

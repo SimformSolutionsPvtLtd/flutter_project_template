@@ -16,5 +16,6 @@
   "base_url": "https://simform.com",
   "is_theme_enable": true,
   "_app_class_name": "",
-  "splash_image_path": "Required"
+  "splash_image_path": "Required",
+  "__splash_asset_path": "assets/images/splash.{% if cookiecutter.splash_image_path != 'Required' %}{{cookiecutter.splash_image_path.split('.')[1]}}{% else %}'png'{% endif %}"
 }
