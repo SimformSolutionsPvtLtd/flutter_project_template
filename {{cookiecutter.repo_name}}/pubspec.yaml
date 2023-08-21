@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
   provider: 6.0.5 # Dependency Injection
   logging: 1.2.0 # Logger
-  intl: 0.18.1 # Localization
+  intl: 0.18.0 # Localization
   connectivity_plus: 4.0.2 # Internet connection check
   shared_preferences: 2.2.0 # Local storage
   json_annotation: 4.8.1 # Annotations for json generator
@@ -24,6 +24,7 @@ dependencies:
   flutter_mobx: 2.0.6+5 # State manager widgets
   flutter_secure_storage: 8.0.0 # Local storage for sensitive data
   dio: 5.3.2 # Added to avoid warning
+  device_preview: 1.1.0 # Device Preview
 
 dev_dependencies:
   flutter_test:
