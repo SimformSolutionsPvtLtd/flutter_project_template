@@ -18,7 +18,7 @@ dependencies:
   shared_preferences: 2.2.0 # Local storage
   json_annotation: 4.8.1 # Annotations for json generator
   flutter_svg: 2.0.7 # Svg to widget
-  sentry_flutter: 7.7.0 # Crash analytics
+  sentry_flutter: 7.9.0 # Crash analytics
   retrofit: 4.0.1 # Network calls
   mobx: 2.2.0 # State manager
   flutter_mobx: 2.0.6+5 # State manager widgets
@@ -34,6 +34,13 @@ dev_dependencies:
   mobx_codegen: 2.3.0 # Mobx state manager gen
   flutter_gen_runner: 5.3.1 # Asset code gen
   very_good_analysis: 5.0.0+1 # Linter
+  flutter_launcher_icons: ^0.13.1 # Launcher Icons
+
+flutter_icons:
+  android: "splash"
+  ios: true
+  remove_alpha_ios: true
+  image_path: {{cookiecutter.__splash_asset_path}}
 
 flutter:
   uses-material-design: true
