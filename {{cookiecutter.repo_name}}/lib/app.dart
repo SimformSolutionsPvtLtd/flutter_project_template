@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 {% endif %}
 
-import 'modules/splashScreen/splash_screen.dart';
+import 'modules/splash_screen/splash_screen.dart';
 import 'routes.dart';
 {%- if cookiecutter.is_theme_enable != false -%}
 import 'utils/extensions.dart';
