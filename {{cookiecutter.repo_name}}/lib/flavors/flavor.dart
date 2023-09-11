@@ -7,5 +7,11 @@ enum Flavor {
   dev,
 
   /// A production flavor that will be used to publish this app
-  prod
+  prod;
+
+  bool get isDev => this == Flavor.dev;
+
+  bool get isUat => this == Flavor.uat;
+
+  bool get isProd => this == Flavor.prod;
 }

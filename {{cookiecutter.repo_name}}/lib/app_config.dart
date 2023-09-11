@@ -14,10 +14,10 @@ class AppConfig extends StatelessWidget {
     return GestureDetector(
         onTap: context.hideKeyboard,
         child: {%- if cookiecutter.is_theme_enable != false -%}
-            const {{cookiecutter._app_class_name}}App().withProvider(AppThemeStore()),
-          {% else %}
-            const {{cookiecutter._app_class_name}}App(),
-          {% endif %}
+          const {{cookiecutter._app_class_name}}App().withProvider(AppThemeStore()),
+        {% else %}
+          const {{cookiecutter._app_class_name}}App(),
+        {% endif %}
     );
   }
 }
